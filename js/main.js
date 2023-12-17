@@ -2,13 +2,16 @@
 document.querySelector('button').addEventListener('click', getFetch)
 
 function getFetch(){
-  const choice = document.querySelector('input').value
-  const url = 'https://pokeapi.co/api/v2/pokemon/'+choice
+  const url = 'https://api.chucknorris.io/jokes/random'
 
   fetch(url)
       .then(res => res.json()) // parse response as JSON
       .then(data => {
-        console.log(data)
+        console.log(data);
+        let joke = data.value;
+        document.querySelector('#joke').innerText = joke;
+
+        
       })
       .catch(err => {
           console.log(`error ${err}`)
